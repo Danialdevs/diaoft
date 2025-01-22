@@ -13,6 +13,7 @@ class SetLocale
         if (Session::has('locale')) {
             App::setLocale(Session::get('locale'));
         }
+
         return $next($request);
     }
 }

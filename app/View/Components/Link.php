@@ -8,10 +8,12 @@ use Illuminate\View\Component;
 
 class Link extends Component
 {
-
     public $title;
+
     public $text;
+
     public $link;
+
     /**
      * Create a new component instance.
      */

@@ -44,10 +44,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     public function school()
     {
         return $this->belongsTo(School::class);
     }
+
     public function city()
     {
         return $this->belongsTo(City::class);

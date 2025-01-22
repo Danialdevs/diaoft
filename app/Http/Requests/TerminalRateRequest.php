@@ -14,8 +14,8 @@ class TerminalRateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "score" => "required|integer|in:0,50,100",
-            "grade" => "required|integer|between:1,11",
+            'score' => 'required|integer|in:0,50,100',
+            'grade' => 'required|integer|between:1,11',
         ];
     }
 }

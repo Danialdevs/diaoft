@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rate extends Model
 {
-    protected $fillable = ["school_id", "score", "grade"];
+    protected $fillable = ['school_id', 'score', 'grade'];
 
     use HasFactory;
 }

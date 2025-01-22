@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("address");
-            $table->string("contact_email");
+            $table->string('name');
+            $table->string('address');
+            $table->string('contact_email');
             $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('set null');
-$table->timestamps();
+            $table->timestamps();
         });
     }
 

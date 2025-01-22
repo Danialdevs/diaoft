@@ -25,7 +25,9 @@ class School extends Model
     {
         return $this->hasMany(Rate::class);
     }
-    public function devices(){
+
+    public function devices()
+    {
         return $this->hasMany(Device::class);
     }
 }

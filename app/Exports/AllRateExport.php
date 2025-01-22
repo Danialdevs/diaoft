@@ -13,6 +13,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 class AllRateExport implements FromCollection, WithHeadings, WithStyles
 {
     protected $startDate;
+
     protected $endDate;
 
     public function __construct(Carbon $startDate, Carbon $endDate)
@@ -24,17 +25,17 @@ class AllRateExport implements FromCollection, WithHeadings, WithStyles
     public function headings(): array
     {
         return [
-            __("grade"),
-            __("score"),
-            __("quality"),
-            __("date"),
+            __('grade'),
+            __('score'),
+            __('quality'),
+            __('date'),
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
         $lastRow = $sheet->getHighestRow() + 2;
-        $sheet->setCellValue("A{$lastRow}", __("app.name") . " - " . __("title"));
+        $sheet->setCellValue("A{$lastRow}", __('app.name').' - '.__('title'));
         $sheet->mergeCells("A{$lastRow}:Z{$lastRow}");
         $sheet->getStyle("A{$lastRow}")->applyFromArray([
             'font' => [
@@ -47,6 +48,7 @@ class AllRateExport implements FromCollection, WithHeadings, WithStyles
             ],
         ]);
     }
+
     public function collection()
     {
         $schoolId = Auth::user()->school_id;
@@ -60,14 +62,14 @@ class AllRateExport implements FromCollection, WithHeadings, WithStyles
                 $rate->created_at = Carbon::parse($rate->created_at)->format('d-m-Y');
 
                 if ($rate->score == 0) {
-                    $rate->rate = __("report.bad");
-                    $rate->score = "0";
+                    $rate->rate = __('report.bad');
+                    $rate->score = '0';
                 } elseif ($rate->score < 50) {
-                    $rate->rate = __("report.bad");
+                    $rate->rate = __('report.bad');
                 } elseif ($rate->score <= 75) {
-                    $rate->rate = __("report.good");
+                    $rate->rate = __('report.good');
                 } else {
-                    $rate->rate = __("report.excellent");
+                    $rate->rate = __('report.excellent');
                 }
 
                 return $rate;

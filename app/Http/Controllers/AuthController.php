@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-
     public function AuthPage()
     {
         if (Auth::check()) {
-            return redirect()->route("rates-index");
+            return redirect()->route('rates-index');
         }
+
         return view('pages.login');
     }
 
@@ -22,9 +21,10 @@ class AuthController extends Controller
     {
         if (Auth::attempt($request->validated())) {
             $request->session()->regenerate();
-            return redirect()->route("rates-index");
+
+            return redirect()->route('rates-index');
         }
-        session()->flash('error',  __("login.error"));
+        session()->flash('error', __('login.error'));
 
         return back();
     }
@@ -38,9 +38,9 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
     public function dashboard()
     {
         return view('pages.terminal');
     }
-
 }

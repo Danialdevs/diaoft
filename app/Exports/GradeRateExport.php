@@ -6,21 +6,15 @@ use App\Models\Rate;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
-use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithDefaultStyles;
 use Maatwebsite\Excel\Concerns\WithStyles;
-use PhpOffice\PhpSpreadsheet\Style\Border;
-use PhpOffice\PhpSpreadsheet\Style\Color;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
-use PhpOffice\PhpSpreadsheet\Style\Alignment;
-use PhpOffice\PhpSpreadsheet\Style\Style;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class GradeRateExport implements FromView, ShouldAutoSize, WithStyles
 {
     protected $startDate;
+
     protected $endDate;
 
     /***
@@ -32,10 +26,11 @@ class GradeRateExport implements FromView, ShouldAutoSize, WithStyles
         $this->startDate = $startDate;
         $this->endDate = $endDate;
     }
+
     public function styles(Worksheet $sheet)
     {
         $lastRow = $sheet->getHighestRow() + 2;
-        $sheet->setCellValue("A{$lastRow}", __("app.name") . " - " . __("title"));
+        $sheet->setCellValue("A{$lastRow}", __('app.name').' - '.__('title'));
         $sheet->mergeCells("A{$lastRow}:Z{$lastRow}");
         $sheet->getStyle("A{$lastRow}")->applyFromArray([
             'font' => [
@@ -49,7 +44,6 @@ class GradeRateExport implements FromView, ShouldAutoSize, WithStyles
         ]);
     }
 
-
     public function view(): View
     {
         $schoolId = Auth::user()->school_id;
@@ -59,8 +53,7 @@ class GradeRateExport implements FromView, ShouldAutoSize, WithStyles
             ->get();
 
         return view('exports.RateExportTable', [
-            'rates' => $rates
+            'rates' => $rates,
         ]);
     }
-
 }

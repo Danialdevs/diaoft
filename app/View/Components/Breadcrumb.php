@@ -8,8 +8,8 @@ use Illuminate\View\Component;
 
 class Breadcrumb extends Component
 {
-
     public $item;
+
     public $active;
 
     /**

@@ -9,8 +9,11 @@ use Illuminate\View\Component;
 class ComponentBreadcrumb extends Component
 {
     public $item;
+
     public $text;
+
     public $link;
+
     /**
      * Create a new component instance.
      */

@@ -7,14 +7,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="shortcut icon" href="{{asset("img/icons/icon-48x48.png")}}" />
 
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <title>@yield("title") - система оценки питание</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{{asset("dist/css/tabler.min.css")}}" rel="stylesheet"/>
+    <link href="{{asset("dist/css/tabler-flags.min.css")}}" rel="stylesheet"/>
+    <link href="{{asset("dist/css/tabler-payments.min.css")}}" rel="stylesheet"/>
+    <link href="{{asset("dist/css/tabler-vendors.min.css")}}" rel="stylesheet"/>
+    <link href="{{asset("dist/css/demo.min.css")}}" rel="stylesheet"/>
+
+
     <link href="{{asset("css/app.css")}}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+<script src="{{ asset('dist/libs/apexcharts/dist/apexcharts.min.js') }}" defer></script>
+<script src="{{ asset('dist/libs/jsvectormap/dist/js/jsvectormap.min.js') }}" defer></script>
+<script src="{{ asset('dist/libs/jsvectormap/dist/maps/world.js') }}" defer></script>
+<script src="{{ asset('dist/libs/jsvectormap/dist/maps/world-merc.js') }}" defer></script>
+
+<script src="{{ asset('dist/js/tabler.min.js') }}" defer></script>
+
+
+
 @yield("body")
-<script src="{{asset("js/app.js")}}"></script>
 </body>
 </html>

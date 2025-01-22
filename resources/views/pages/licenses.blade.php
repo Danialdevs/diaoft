@@ -12,9 +12,9 @@
                         <p><strong>{{ __('license_number:') }}</strong> {{ $activeLicense->license_number }}</p>
                         <p><strong>{{ __('status:') }}</strong>
                             @if($activeLicense->type = "active")
-                                <span class="badge bg-success">{{ __('active') }}</span>
+                                <span class="badge bg-green text-green-fg">{{ __('active') }}</span>
                             @else
-                                <span class="badge bg-danger">{{ __('expired') }}</span>
+                                <span class="badge bg-red text-red-fg">{{ __('expired') }}</span>
                             @endif
                         </p>
                         <p><strong>{{ __('issued:') }}</strong> {{$activeLicense->issue_date}}</p>
@@ -35,7 +35,7 @@
                             <p>
                                 {{ __('for_detailed_information_and_purchase_please_contact_us.') }}
                             </p>
-                            <a href="tel:+77078397788" class="btn btn-outline-primary btn-lg mt-3" style="transition: background-color 0.3s, color 0.3s;">
+                            <a href="tel:+77078397788" class="btn btn-outline-primary  mt-3" style="transition: background-color 0.3s, color 0.3s;">
                                 {{ __('contact_for_details') }}
                             </a>
                         </li>
@@ -62,9 +62,9 @@
                         <td>{{$license->license_number}}</td>
                         <td>
                             @if($license->type = "active")
-                                <span class="badge bg-success">{{ __('active') }}</span>
+                                <span class="badge bg-green text-green-fg">{{ __('active') }}</span>
                             @else
-                                <span class="badge bg-danger">{{ __('expired') }}</span>
+                                <span class="badge bg-red text-red-fg">{{ __('expired') }}</span>
                             @endif
                         </td>
                         <td>{{$license->expiry_date}}</td>
