@@ -10,8 +10,6 @@
                 <th>Адрес</th>
                 <th>Эл.почта</th>
                 <th>БИН</th>
-                <th>Кол-во терминалов</th>
-                <th>Действия</th>
             </tr>
             </thead>
                @foreach($schools as $school)
@@ -20,7 +18,7 @@
                     <td>{{$school->address}}</td>
                     <td>{{$school->contact_email}}</td>
                     <td>{{$school->bin}}</td>
-                
+
                 </tr>
                @endforeach
             <tbody>
