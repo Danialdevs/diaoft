@@ -10,6 +10,7 @@
                 <th>Адрес</th>
                 <th>Эл.почта</th>
                 <th>БИН</th>
+                <th>Действия</th>
             </tr>
             </thead>
                @foreach($schools as $school)
@@ -18,6 +19,9 @@
                     <td>{{$school->address}}</td>
                     <td>{{$school->contact_email}}</td>
                     <td>{{$school->bin}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{route("admin.system-install", $school->id)}}">Редактировать</a>
+                    </td>
 
                 </tr>
                @endforeach
