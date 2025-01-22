@@ -20,11 +20,7 @@
                     <td>{{$school->address}}</td>
                     <td>{{$school->contact_email}}</td>
                     <td>{{$school->bin}}</td>
-                    <td>{{$school->devices->count()}}</td>
-                    <td>
-                        <a class="btn btn-primary" href="{{route("admin.system-install", $school->id)}}">Добавить устройство</a>
-                    </td>
-
+                
                 </tr>
                @endforeach
             <tbody>

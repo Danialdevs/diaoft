@@ -27,7 +27,6 @@ Route::get('/not-license', [LicensesController::class, 'notLicense'])->name('not
 
 Route::group(["prefix" => "admin", 'as' => 'admin.'], function (){
     Route::get('/', [AdminController::class, 'schoolsIndex'])->name('schools-show');
-    Route::match(['get', 'post'],'/addTerminal/{id}', [TerminalController::class, 'systemInstall'])->name('system-install')->middleware("auth");
 
 });
 
