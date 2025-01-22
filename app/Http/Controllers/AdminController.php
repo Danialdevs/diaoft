@@ -12,4 +12,10 @@ class AdminController extends Controller
         $schools = School::all();
         return view('pages.admin.schools.index', compact("schools"));
     }
+    public function schoolsEdit($id)
+    {
+
+        $school = School::findOrFail($id);
+return view('pages.admin.schools.edit', compact('school'));
+    }
 }

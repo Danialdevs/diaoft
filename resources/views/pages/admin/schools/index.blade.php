@@ -20,7 +20,7 @@
                     <td>{{$school->contact_email}}</td>
                     <td>{{$school->bin}}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route("admin.system-install", $school->id)}}">Редактировать</a>
+                        <a class="btn btn-primary" href="{{route("admin.schools-edit", $school->id)}}">Редактировать</a>
                     </td>
 
                 </tr>
