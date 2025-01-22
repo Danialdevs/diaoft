@@ -20,4 +20,8 @@ class AdminController extends Controller
         $cities = City::all();
         return view('pages.admin.schools.edit', compact('school', 'cities'));
     }
+    public function schoolsAddLicense()
+    {
+
+    }
 }
