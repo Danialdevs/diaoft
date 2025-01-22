@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\School;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class AdminController extends Controller
     {
 
         $school = School::findOrFail($id);
-return view('pages.admin.schools.edit', compact('school'));
+        $cities = City::all();
+        return view('pages.admin.schools.edit', compact('school', 'cities'));
     }
 }
