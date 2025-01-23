@@ -5,6 +5,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="h3 mb-0">{{__('rates.title')}}</h1>
+
         <form method="GET" class="d-flex align-items-center">
             <input
                 type="date"
@@ -121,6 +122,7 @@
         </div>
     </div>
 
+
     <!-- Таблица с данными -->
     <div class="row">
         <div class="col-8">
@@ -165,6 +167,12 @@
         </div>
 
         <div class="col-4">
+            <div class="card mb-2 border-start-success py-2 shadow">
+                <div class="card-body">
+                    <div id="chart-demo-pie"></div>
+                </div>
+            </div>
+
             <div class="card border-start-info py-2 shadow">
                 <div class="card-header">
                     <h5 class="card-title mb-0">{{ __('reports') }}</h5>
@@ -208,4 +216,65 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.ApexCharts) {
+                const chartData = {
+                    chart: {
+                        type: "donut",
+                        height: 240,
+                        sparkline: {
+                            enabled: true
+                        },
+                        animations: {
+                            enabled: false
+                        },
+                    },
+                    fill: {
+                        opacity: 1,
+                    },
+                    series: [
+                        {{ $rates->where('score', '<', 50)->count() }},
+                        {{ $rates->where('score', '>=', 50)->where('score', '<', 75)->count() }},
+                        {{ $rates->where('score', '>=', 75)->count() }}
+                    ],
+                    labels: [
+                        "{{ __('rates.card.bad') }}",
+                        "{{ __('rates.card.good') }}",
+                        "{{ __('rates.card.perfectly') }}"
+                    ],
+                    tooltip: {
+                        theme: 'light',
+                        fillSeriesColor: false
+                    },
+                    grid: {
+                        strokeDashArray: 4,
+                    },
+                    colors: [
+                        tabler.getColor("danger"),
+                        tabler.getColor("orange", 0.8),
+                        tabler.getColor("green", 0.6)
+                    ],
+                    legend: {
+                        show: true,
+                        position: 'bottom',
+                        offsetY: 12,
+                        markers: {
+                            width: 10,
+                            height: 10,
+                            radius: 100,
+                        },
+                        itemMargin: {
+                            horizontal: 8,
+                            vertical: 8
+                        },
+                    }
+                };
+
+                const chartElement = document.getElementById('chart-demo-pie');
+                const chart = new ApexCharts(chartElement, chartData);
+                chart.render();
+            }
+        });
+    </script>
 @endsection
