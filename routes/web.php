@@ -41,20 +41,11 @@ Route::get('/lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('change.language');
 
-Route::get('password/{password}', function ($password) {
-
-    // Генерация хеша для переданного пароля
-
-    $hashedPassword = Hash::make($password);
-
-    // Возвращаем результат
-
-    return response()->json([
-
-        'original' => $password,
-
-        'hashed' => $hashedPassword,
-
+Route::get('password/', function () {
+    \App\Models\User::create([
+       "name" => "school",
+       "email" => "school1@mail.ru",
+       "password" => Hash::make("daniyal"),
+       "school_id" => 1,
     ]);
-
 });
